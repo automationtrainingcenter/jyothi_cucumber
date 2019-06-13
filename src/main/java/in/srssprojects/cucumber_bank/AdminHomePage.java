@@ -63,5 +63,10 @@ public class AdminHomePage {
 	public void clickEmployees() {
 		this.employees.click();
 	}
+	
+	//verify Admin home page with welcome to admin message and logout link
+	public boolean verifyAdminHomePage() {
+		return this.logout.isDisplayed();
+	}
 
 }

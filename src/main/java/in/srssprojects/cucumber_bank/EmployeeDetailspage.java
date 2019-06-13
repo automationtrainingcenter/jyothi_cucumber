@@ -18,7 +18,7 @@ WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickNewEmployee() 
+	public EmployeeCreationpage clickNewEmployee() 
 	{
 		this.newEmployee.click();
 		return PageFactory.initElements(driver, EmployeeCreationpage.class);

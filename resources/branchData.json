@@ -1,0 +1,26 @@
+[
+		{
+			"branchName": "BrnachONE",
+			"address1": "Miyapur",
+			"zipcode": "52101",
+			"country": "UK",
+			"state": "England",
+			"city": "LONDON"
+		},
+		{
+			"branchName": "BrnachTWO",
+			"address1": "Miyapur",
+			"zipcode": "52101",
+			"country": "UK",
+			"state": "England",
+			"city": "LONDON"
+		},
+		{
+			"branchName": "BrnachTHREE",
+			"address1": "Miyapur",
+			"zipcode": "52101",
+			"country": "UK",
+			"state": "England",
+			"city": "LONDON"
+		}
+]

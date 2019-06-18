@@ -16,34 +16,50 @@ import utilitiles.BrowserHelper;
 public class LoginSteps extends BrowserHelper {
 	BankHomePage bankHomePage;
 	AdminHomePage adminHomePage;
-	
-	@Given("user is in bank home")
+
+	@Given("user is in bank home page")
 	public void user_is_in_bank_home() throws Throwable {
-		openBrowser(Browser.CHROME, "http://srssprojects.in");
-		bankHomePage = new BankHomePage(driver);
+		openBrowser(Browser.CHROME, "http://srssprojects.in");	
 	}
 
 	@When("user enters valid username")
 	public void user_enters_valid_username() throws Throwable {
+		bankHomePage = new BankHomePage(driver);
 		bankHomePage.fillUserName("Admin");
 	}
 
 	@Then("user can see welcome to admin message with logout link")
 	public void user_can_see_welcome_to_admin_message_with_logout_link() throws Throwable {
 		sleep(2000);
+		adminHomePage = PageFactory.initElements(driver, AdminHomePage.class);
 		Assert.assertTrue(adminHomePage.verifyAdminHomePage());
 	}
 
 	@And("user enter valid password")
 	public void user_enter_valid_password() throws Throwable {
 		bankHomePage.fillPassword("Admin");
-		
+
 	}
 
 	@And("user clicks on login button")
 	public void user_clicks_on_login_button() throws Throwable {
 		bankHomePage.clickLogin();
-		adminHomePage = PageFactory.initElements(driver, AdminHomePage.class);
-		
+	}
+
+	@When("user enters invalid password")
+	public void user_enters_invalid_password() {
+		bankHomePage.fillPassword("admiinnnnnn");
+	}
+
+	@Then("user can see an error message saying invalid banker name or password")
+	public void user_can_see_an_error_message_saying_invalid_banker_name_or_password() {
+		String text = driver.switchTo().alert().getText();
+		driver.switchTo().alert().accept();
+		Assert.assertTrue(text.contains("InCorrect BankerName"));
+	}
+
+	@When("user enters invalid username")
+	public void user_enters_invalid_username() {
+		bankHomePage.fillUserName("addminnnnn");
 	}
 }

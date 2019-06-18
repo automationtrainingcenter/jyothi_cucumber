@@ -8,9 +8,10 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		dryRun = false,
-		features = {"src/test/java/features"},
+		features = {"src/test/java/features/branchCreation.feature"},
 		glue = {"stepdefinitions"},
-		monochrome = true
+		monochrome = true,
+		plugin = {"pretty", "html:target/report"}
 		)
 public class TestRunner {
 

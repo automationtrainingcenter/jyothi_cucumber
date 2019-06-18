@@ -44,6 +44,7 @@ public class EmployeeCreationpage {
 	}
 	
 	public void fillEmployerName(String employerName) {
+		this.EmployerName.clear();
 		this.EmployerName.sendKeys(employerName);
 	}
 	

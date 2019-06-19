@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,14 +19,23 @@ public class LoginSteps extends BrowserHelper {
 	BankHomePage bankHomePage;
 	AdminHomePage adminHomePage;
 
+	@Before
+	public void startup() {
+		openBrowser(Browser.CHROME, "http://srssprojects.in");
+	}
+	
+	@After
+	public void tearDown() {
+		closeBrowser();
+	}
+
 	@Given("user is in bank home page")
 	public void user_is_in_bank_home() throws Throwable {
-		openBrowser(Browser.CHROME, "http://srssprojects.in");	
+		bankHomePage = new BankHomePage(driver);
 	}
 
 	@When("user enters valid username")
 	public void user_enters_valid_username() throws Throwable {
-		bankHomePage = new BankHomePage(driver);
 		bankHomePage.fillUserName("Admin");
 	}
 
